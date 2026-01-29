@@ -13,231 +13,161 @@
 
 <style>
 /* =========================
-   THEME VARIABLES
+   THEME
 ========================= */
 :root {
-    --bg: #f4f4f4;
-    --bg-alt: #ffffff;
-    --text: #111;
-    --muted: #555;
-    --card: #ffffff;
-    --border: #e0e0e0;
+    --bg:#f4f4f4; --bg-alt:#fff; --text:#111; --muted:#555;
+    --card:#fff; --border:#e0e0e0;
 }
-
 [data-theme="dark"] {
-    --bg: #0b0b0b;
-    --bg-alt: #111;
-    --text: #eaeaea;
-    --muted: #9a9a9a;
-    --card: #161616;
-    --border: #2a2a2a;
+    --bg:#0b0b0b; --bg-alt:#111; --text:#eaeaea; --muted:#9a9a9a;
+    --card:#161616; --border:#2a2a2a;
 }
 
-/* =========================
-   GLOBAL
-========================= */
 body {
-    font-family: "Inter", sans-serif;
+    font-family: Inter, sans-serif;
     background: var(--bg);
     color: var(--text);
     margin: 0;
     line-height: 1.7;
-    transition: background .3s, color .3s;
+    transition: background .3s,color .3s;
 }
 
-h1, h2, h3, h4 {
-    font-weight: 700;
-}
+section { padding: 100px 20px; }
+.heading { text-align:center; margin-bottom:50px; }
 
-a {
-    color: var(--text);
-    text-decoration: none;
-}
-
-section {
-    padding: 100px 20px;
-}
-
-.heading {
-    text-align: center;
-    margin-bottom: 50px;
-}
+a { color: var(--text); text-decoration:none; }
 
 /* =========================
    HEADER
 ========================= */
 header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: sticky; top:0; z-index:1000;
     backdrop-filter: blur(14px);
     background: rgba(0,0,0,.65);
 }
-
-[data-theme="light"] header {
-    background: rgba(255,255,255,.75);
-}
+[data-theme="light"] header { background: rgba(255,255,255,.75); }
 
 #menu {
-    display: flex;
-    justify-content: center;
-    gap: 28px;
-    padding: 16px 0;
+    display:flex; justify-content:center; gap:28px;
+    padding:16px 0; list-style:none;
 }
-
-#menu li {
-    list-style: none;
-}
-
-#menu a {
-    font-weight: 600;
-}
-
 .theme-toggle {
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: var(--text);
-    cursor: pointer;
+    background:none; border:none; font-size:18px;
+    color:var(--text); cursor:pointer;
 }
 
 /* =========================
    HERO
 ========================= */
 #lead {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
 }
-
 .hero-grid {
-    max-width: 1100px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: 60px;
-    align-items: center;
+    max-width:1100px; width:100%;
+    display:grid; grid-template-columns:1.2fr .8fr;
+    gap:60px; align-items:center;
 }
-
 .hero-text h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 10px;
+    font-size:clamp(2.5rem,5vw,4rem);
 }
-
-.hero-text h2 {
-    font-weight: 400;
-    color: var(--muted);
-    margin-bottom: 30px;
-}
+.hero-text h2 { font-weight:400; color:var(--muted); }
 
 .btn-main {
-    padding: 14px 34px;
-    border-radius: 30px;
-    border: 2px solid var(--text);
-    font-weight: 600;
-    display: inline-block;
+    padding:14px 34px;
+    border-radius:30px;
+    border:2px solid var(--text);
+    font-weight:600;
+    display:inline-block;
 }
+.btn-main:hover { background:var(--text); color:var(--bg); }
 
-.btn-main:hover {
-    background: var(--text);
-    color: var(--bg);
-}
-
-/* =========================
-   HEADSHOT
-========================= */
+/* Headshot */
 .headshot-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 18px;
-    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:18px;
 }
-
 .headshot-card img {
-    width: 100%;
-    border-radius: 14px;
+    width:100%;
+    border-radius:14px;
 }
 
 /* =========================
    CARDS
 ========================= */
 .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 28px;
-    margin-bottom: 30px;
-    transition: transform .3s ease;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:28px;
+    margin-bottom:30px;
+    transition:transform .3s ease;
 }
+.card:hover { transform:translateY(-6px); }
 
-.card:hover {
-    transform: translateY(-6px);
+/* =========================
+   PROJECTS
+========================= */
+.project-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+.project img {
+    width:100%;
+    border-radius:12px;
+    margin-bottom:15px;
 }
 
 /* =========================
    LIST PILLS
 ========================= */
 .list-inline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    justify-content: center;
+    display:flex; flex-wrap:wrap; gap:14px;
+    justify-content:center; list-style:none; padding:0;
 }
-
 .list-inline li {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 999px;
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:8px 16px;
+    border-radius:999px;
 }
 
 /* =========================
    CONTACT
 ========================= */
-#contact input,
-#contact textarea {
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    color: var(--text);
-    margin-bottom: 16px;
+#contact input, #contact textarea {
+    width:100%; padding:14px;
+    border-radius:12px;
+    background:var(--card);
+    border:1px solid var(--border);
+    color:var(--text);
+    margin-bottom:16px;
 }
 
 /* =========================
    FOOTER
 ========================= */
 footer {
-    text-align: center;
-    padding: 50px 0;
-    color: var(--muted);
+    text-align:center;
+    padding:50px 0;
+    color:var(--muted);
 }
 
 /* =========================
-   ANIMATIONS
+   ANIMATION
 ========================= */
-.fade-up {
-    opacity: 0;
-    transform: translateY(25px);
-}
-
+.fade-up { opacity:0; transform:translateY(25px); }
 .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all .9s ease;
+    opacity:1; transform:translateY(0);
+    transition:all .9s ease;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 900px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+@media (max-width:900px){
+    .hero-grid { grid-template-columns:1fr; text-align:center; }
 }
 </style>
 </head>
@@ -262,19 +192,16 @@ footer {
 <section id="lead">
 <div class="hero-grid fade-up">
 
-    <div class="hero-text">
-        <h1>Christopher Fennell</h1>
-        <h2>System Administrator / IT Specialist</h2>
-        <p>
-            Focused on building reliable systems, supporting users, and continuously
-            improving infrastructure through practical, hands-on solutions.
-        </p>
-        <a href="images/Resume_03.pdf" class="btn-main">Download Resume</a>
-    </div>
+<div class="hero-text">
+<h1>Christopher Fennell</h1>
+<h2>System Administrator / IT Specialist</h2>
+<p>Focused on building reliable systems and supporting users through practical, hands-on solutions.</p>
+<a href="images/Resume_03.pdf" class="btn-main">Download Resume</a>
+</div>
 
-    <div class="headshot-card">
-        <img src="images/headshot.jpg" alt="Christopher Fennell headshot">
-    </div>
+<div class="headshot-card">
+<img src="images/headshot.jpg" alt="Christopher Fennell">
+</div>
 
 </div>
 </section>
@@ -283,9 +210,8 @@ footer {
 <h2 class="heading">About Me</h2>
 <div class="container fade-up" style="max-width:800px;">
 <p>
-Systems Administrator with professional experience supporting enterprise environments.
-Strong background in troubleshooting, system maintenance, and user support, combined
-with leadership experience and a practical problem-solving mindset.
+Systems Administrator with enterprise IT experience, strong troubleshooting skills,
+and a leadership background built in high-responsibility environments.
 </p>
 </div>
 </section>
@@ -295,17 +221,66 @@ with leadership experience and a practical problem-solving mindset.
 <div class="container" style="max-width:900px;">
 
 <div class="card fade-up">
-<span>January 2025 – Present</span>
+<span>Jan 2025 – Present</span>
 <h3>Michael Baker International</h3>
 <h4>System Administrator</h4>
-<p>Managing enterprise systems, user support, and infrastructure reliability within a large organization.</p>
+<p>Managing enterprise systems, infrastructure reliability, and user support.</p>
 </div>
 
 <div class="card fade-up">
-<span>August 2023 – January 2025</span>
+<span>Aug 2023 – Jan 2025</span>
 <h3>HomeSource Systems</h3>
 <h4>IT Support / Systems</h4>
-<p>Provided technical support, troubleshooting, and systems maintenance in a professional IT environment.</p>
+<p>Provided technical support, troubleshooting, and systems maintenance.</p>
+</div>
+
+<div class="card fade-up">
+<span>Sept 2015 – Present</span>
+<h3>Fennell Construction</h3>
+<h4>Master Carpenter</h4>
+<p>Led crews, managed projects, and maintained client relationships.</p>
+</div>
+
+<div class="card fade-up">
+<span>Jan 2020 – June 2020</span>
+<h3>Retro Fitness – Flemington</h3>
+<h4>Manager</h4>
+<p>Managed staff, schedules, and operational performance.</p>
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<h2 class="heading">Projects</h2>
+<div class="container project-grid">
+
+<div class="card project fade-up">
+<img src="images/Screenshot 2023-05-29 at 1.57.17 PM.png">
+<h3>Star Wars Collection Level</h3>
+<p>Unity environment built using ProBuilder and custom assets.</p>
+<a href="https://fennellchris.github.io/Final/">View Project</a>
+</div>
+
+<div class="card project fade-up">
+<img src="images/Screenshot 2023-05-29 at 2.24.48 PM.png">
+<h3>Subscription Manager App</h3>
+<p>Mobile app for managing subscriptions and automated cancellations.</p>
+<a href="https://sites.google.com/view/teamcarbs/home">View Project</a>
+</div>
+
+<div class="card project fade-up">
+<img src="images/graph pic 2.jpeg">
+<h3>NY Dog Licensing Data Mining</h3>
+<p>Data analysis project correlating census data with naming patterns.</p>
+<a href="images/Tech5-2.twbx">View Project</a>
+</div>
+
+<div class="card project fade-up">
+<img src="images/python_code_02.png">
+<h3>Military Rifle Storage Program</h3>
+<p>Python system improving equipment check-in processes.</p>
+<a href="images/midterm_code.py">View Project</a>
 </div>
 
 </div>
@@ -335,39 +310,29 @@ with leadership experience and a practical problem-solving mindset.
 </footer>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 
-/* THEME */
-const toggle = document.getElementById("theme-toggle");
-const icon = toggle.querySelector("i");
-const saved = localStorage.getItem("theme");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-if (saved) document.documentElement.setAttribute("data-theme", saved);
-else if (prefersDark) document.documentElement.setAttribute("data-theme", "dark");
-
+/* Theme toggle */
+const toggle=document.getElementById("theme-toggle");
+const icon=toggle.querySelector("i");
+const saved=localStorage.getItem("theme");
+const prefersDark=window.matchMedia("(prefers-color-scheme: dark)").matches;
+if(saved) document.documentElement.setAttribute("data-theme",saved);
+else if(prefersDark) document.documentElement.setAttribute("data-theme","dark");
 updateIcon();
-
-toggle.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
+toggle.onclick=()=> {
+    const t=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme",t);
+    localStorage.setItem("theme",t);
     updateIcon();
-});
-
-function updateIcon() {
-    icon.className =
-        document.documentElement.getAttribute("data-theme") === "dark"
-        ? "fa fa-sun-o"
-        : "fa fa-moon-o";
+};
+function updateIcon(){
+    icon.className=document.documentElement.getAttribute("data-theme")==="dark"?"fa fa-sun-o":"fa fa-moon-o";
 }
 
-/* FADE */
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting && e.target.classList.add("visible"));
-});
-document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+/* Animations */
+const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("visible")));
+document.querySelectorAll(".fade-up").forEach(el=>obs.observe(el));
 </script>
 
 </body>
