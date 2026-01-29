@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Christopher Fennell | Systems Administrator</title>
+<title>Christopher Fennell | System Administrator</title>
 
 <link rel="icon" href="favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
     --bg: #0b0b0b;
     --bg-alt: #111;
     --text: #eaeaea;
-    --muted: #aaa;
+    --muted: #9a9a9a;
     --card: #161616;
     --border: #2a2a2a;
 }
@@ -36,10 +36,6 @@
 /* =========================
    GLOBAL
 ========================= */
-* {
-    box-sizing: border-box;
-}
-
 body {
     font-family: "Inter", sans-serif;
     background: var(--bg);
@@ -58,8 +54,13 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    opacity: .7;
+section {
+    padding: 100px 20px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 /* =========================
@@ -69,19 +70,19 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(12px);
-    background: rgba(0,0,0,.6);
+    backdrop-filter: blur(14px);
+    background: rgba(0,0,0,.65);
 }
 
 [data-theme="light"] header {
-    background: rgba(255,255,255,.7);
+    background: rgba(255,255,255,.75);
 }
 
 #menu {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    padding: 15px 0;
+    gap: 28px;
+    padding: 16px 0;
 }
 
 #menu li {
@@ -92,7 +93,6 @@ header {
     font-weight: 600;
 }
 
-/* Theme toggle */
 .theme-toggle {
     background: none;
     border: none;
@@ -109,22 +109,30 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 0 20px;
 }
 
-#lead-content h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+.hero-grid {
+    max-width: 1100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 60px;
+    align-items: center;
 }
 
-#lead-content h2 {
+.hero-text h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 10px;
+}
+
+.hero-text h2 {
     font-weight: 400;
     color: var(--muted);
     margin-bottom: 30px;
 }
 
 .btn-main {
-    padding: 12px 30px;
+    padding: 14px 34px;
     border-radius: 30px;
     border: 2px solid var(--text);
     font-weight: 600;
@@ -137,15 +145,19 @@ header {
 }
 
 /* =========================
-   SECTIONS
+   HEADSHOT
 ========================= */
-section {
-    padding: 90px 20px;
+.headshot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
 }
 
-.heading {
-    margin-bottom: 40px;
-    text-align: center;
+.headshot-card img {
+    width: 100%;
+    border-radius: 14px;
 }
 
 /* =========================
@@ -154,10 +166,10 @@ section {
 .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 25px;
+    border-radius: 18px;
+    padding: 28px;
     margin-bottom: 30px;
-    transition: transform .3s, opacity .3s;
+    transition: transform .3s ease;
 }
 
 .card:hover {
@@ -165,20 +177,12 @@ section {
 }
 
 /* =========================
-   EXPERIENCE
-========================= */
-.timeline .card span {
-    color: var(--muted);
-    font-size: .9rem;
-}
-
-/* =========================
-   SKILLS / PROGRAMS
+   LIST PILLS
 ========================= */
 .list-inline {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 14px;
     justify-content: center;
 }
 
@@ -195,12 +199,12 @@ section {
 #contact input,
 #contact textarea {
     width: 100%;
-    padding: 12px;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 12px;
     background: var(--card);
     border: 1px solid var(--border);
     color: var(--text);
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 /* =========================
@@ -208,7 +212,7 @@ section {
 ========================= */
 footer {
     text-align: center;
-    padding: 40px 0;
+    padding: 50px 0;
     color: var(--muted);
 }
 
@@ -223,7 +227,17 @@ footer {
 .fade-up.visible {
     opacity: 1;
     transform: translateY(0);
-    transition: all .8s ease;
+    transition: all .9s ease;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 }
 </style>
 </head>
@@ -246,48 +260,52 @@ footer {
 </header>
 
 <section id="lead">
-<div id="lead-content" class="fade-up">
-    <h1>Christopher Fennell</h1>
-    <h2>System Administrator / IT Specialist</h2>
-    <a href="images/Resume_03.pdf" class="btn-main">Download Resume</a>
+<div class="hero-grid fade-up">
+
+    <div class="hero-text">
+        <h1>Christopher Fennell</h1>
+        <h2>System Administrator / IT Specialist</h2>
+        <p>
+            Focused on building reliable systems, supporting users, and continuously
+            improving infrastructure through practical, hands-on solutions.
+        </p>
+        <a href="images/Resume_03.pdf" class="btn-main">Download Resume</a>
+    </div>
+
+    <div class="headshot-card">
+        <img src="images/headshot.jpg" alt="Christopher Fennell headshot">
+    </div>
+
 </div>
 </section>
 
 <section id="about">
 <h2 class="heading">About Me</h2>
-<div class="container fade-up">
+<div class="container fade-up" style="max-width:800px;">
 <p>
-Systems Administrator with a strong foundation in IT infrastructure, user support,
-and systems management. Background in leadership, problem-solving, and hands-on
-technical environments with a proven ability to learn quickly and adapt.
+Systems Administrator with professional experience supporting enterprise environments.
+Strong background in troubleshooting, system maintenance, and user support, combined
+with leadership experience and a practical problem-solving mindset.
 </p>
 </div>
 </section>
 
 <section id="experience">
 <h2 class="heading">Experience</h2>
-<div class="container timeline">
+<div class="container" style="max-width:900px;">
 
 <div class="card fade-up">
-<span>Jan 2025 – Present</span>
+<span>January 2025 – Present</span>
 <h3>Michael Baker International</h3>
 <h4>System Administrator</h4>
-<p>Managing enterprise systems, supporting users, maintaining infrastructure, and
-contributing to system reliability and security.</p>
+<p>Managing enterprise systems, user support, and infrastructure reliability within a large organization.</p>
 </div>
 
 <div class="card fade-up">
-<span>Aug 2023 – Jan 2025</span>
+<span>August 2023 – January 2025</span>
 <h3>HomeSource Systems</h3>
 <h4>IT Support / Systems</h4>
 <p>Provided technical support, troubleshooting, and systems maintenance in a professional IT environment.</p>
-</div>
-
-<div class="card fade-up">
-<span>Sept 2015 – Present</span>
-<h3>Fennell Construction</h3>
-<h4>Master Carpenter</h4>
-<p>Led crews, managed projects, and maintained client relationships across residential builds.</p>
 </div>
 
 </div>
@@ -296,14 +314,14 @@ contributing to system reliability and security.</p>
 <section id="skills">
 <h2 class="heading">Skills</h2>
 <ul class="list-inline fade-up">
-<li>Python</li><li>JavaScript</li><li>Linux</li><li>Windows Server</li>
-<li>Networking</li><li>HTML/CSS</li><li>PowerShell</li>
+<li>Python</li><li>PowerShell</li><li>Linux</li><li>Windows Server</li>
+<li>Networking</li><li>JavaScript</li><li>HTML/CSS</li>
 </ul>
 </section>
 
 <section id="contact">
 <h2 class="heading">Get in Touch</h2>
-<div class="container fade-up">
+<div class="container fade-up" style="max-width:600px;">
 <form method="POST" action="https://formspree.io/f/mbjeebob">
 <input type="email" name="_replyto" placeholder="Your email" required>
 <textarea name="message" placeholder="Your message" required></textarea>
@@ -317,21 +335,16 @@ contributing to system reliability and security.</p>
 </footer>
 
 <script>
-/* YEAR */
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* THEME TOGGLE */
+/* THEME */
 const toggle = document.getElementById("theme-toggle");
 const icon = toggle.querySelector("i");
-
 const saved = localStorage.getItem("theme");
 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-if (saved) {
-    document.documentElement.setAttribute("data-theme", saved);
-} else if (prefersDark) {
-    document.documentElement.setAttribute("data-theme", "dark");
-}
+if (saved) document.documentElement.setAttribute("data-theme", saved);
+else if (prefersDark) document.documentElement.setAttribute("data-theme", "dark");
 
 updateIcon();
 
@@ -350,15 +363,10 @@ function updateIcon() {
         : "fa fa-moon-o";
 }
 
-/* SCROLL ANIMATIONS */
+/* FADE */
 const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-        }
-    });
+    entries.forEach(e => e.isIntersecting && e.target.classList.add("visible"));
 });
-
 document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 </script>
 
